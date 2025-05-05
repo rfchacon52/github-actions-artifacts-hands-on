@@ -32,5 +32,5 @@ jobs:
         name: hello-artifact
         path: my_files/hello.txt
     - name: Read File
-      run: cat ./hello.txt
+      run: cat my_files/hello.txt
    
