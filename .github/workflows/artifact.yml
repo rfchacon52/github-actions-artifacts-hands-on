@@ -10,14 +10,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Create a text file
-      run: echo "Hello, world!" > ./hello.txt
+    - name: Create path
+      run: mkdir -p my_files
+    - name: Create file  
+      run: echo "Hello, world!" >  my_files/hello.txt
 
     - name: Archive text file
       uses: actions/upload-artifact@v4
       with:
         name: hello-artifact
-        path: ./hello.txt
+        path: my_files/hello.txt
 
   download:
     needs: [build]
@@ -28,7 +30,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: hello-artifact
-        path: ./hello.txt
+        path: my_files/hello.txt
     - name: Read File
       run: cat ./hello.txt
    
